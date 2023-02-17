@@ -1,0 +1,39 @@
+<form>
+  <input
+    #chip
+    [(ngModel)]="chipName"
+    type="text"
+    (keyup.enter)="addChip(chipName.value)"
+    style="border: 1px solid pink;"
+  />
+  <div
+    *ngFor="let chip of chips; let i = index"
+    style="margin: 5px; border:1px solid blue;"
+  >
+    <div *ngIf="!editing || editingIndex !== i">
+      {{ chip }}
+      <button (click)="removeChip(i)">X</button>
+      <button (click)="startEditing(i)">Edit</button>
+    </div>
+    <div *ngIf="editing && editingIndex === i">
+      <input
+        name="editValue"
+        [(ngModel)]="editValue"
+        (keyup.enter)="saveEditing(i)"
+      />
+      <button (click)="saveEditing(i)">Save</button>
+      <button (click)="cancelEditing()">Cancel</button>
+    </div>
+  </div>
+</form>
+
+<div
+  style="margin: 5px; border:1px solid blue; display:flex; flex-direction: column"
+>
+  <textarea
+    [(ngModel)]="pastedList"
+    placeholder="Add the chips list"
+  ></textarea>
+  <input [(ngModel)]="listSeparator" placeholder="Enter the separator" />
+  <button (click)="convertList()">Convert</button>
+</div>
