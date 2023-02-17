@@ -13,16 +13,16 @@ export class ChipsComponent implements OnInit {
   editValue: string;
   pastedList: string;
   listSeparator: string;
-  chipName: any;
+  chipName: string;
   constructor(private chipsService: ChipsService) { }
 
   ngOnInit(): void {
     this.chipsService.chips.subscribe((chips) => (this.chips = [...chips]));
   }
 
-  addChip(value: string) {
-    console.log('Value', value);
-    this.chipsService.addChip(value);
+  addChip() {
+    console.log('Value', );
+    this.chipsService.addChip(this.chipName);
     this.chipName = '';
   }
 
