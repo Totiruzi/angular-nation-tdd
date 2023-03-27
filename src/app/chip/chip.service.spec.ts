@@ -1,27 +1,38 @@
+import "@angular/compiler";
 import { Chip, ChipService } from './chip.service';
+import { UpperCasedPipe } from "./uppercase.pipe";
 
 describe('ChipService', () => {
   let chipService: ChipService;
   let chips: Array<Chip> = [];
+  let upperCasedPipe: UpperCasedPipe;
 
   beforeEach(() => {
     chipService = new ChipService();
-    chips = chipService.getChips()
+    chips = chipService.getChips();
+    upperCasedPipe = new UpperCasedPipe()
   });
 
   it('1. should be created', () => {
     expect(chipService).toBeTruthy();
   });
 
-  it('2. should add a chip', () => {
+  it('2. should add a chip ', () => {
     chipService.addChip('Mike');
     chips = chipService.getChips();
     let lastChipIndex = chips.length - 1;
+    const nameToUppercase = (chips[lastChipIndex].label).toUpperCase()
+    console.log(`name to uppercase ${nameToUppercase}`)
+    console.log("🚀 ~ file: chip.service.spec.ts:23 ~ it ~ chips:", chips[lastChipIndex].label)
+    
     expect(chips.length).toBe(7);
     expect(chips[lastChipIndex]).toEqual({
       id: lastChipIndex + 1,
       label: 'Mike',
     });
+    const chipLabel = chips[lastChipIndex].label
+    expect(upperCasedPipe.transform(chipLabel)).toEqual(nameToUppercase);
+    console.log(`pipe.transform(chips[lastChipIndex].label) ${upperCasedPipe.transform(chips[lastChipIndex].label)}`)
   });
 
   it('3. should edit a chip', () => {

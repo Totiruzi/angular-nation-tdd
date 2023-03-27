@@ -6,7 +6,7 @@
         
         <div class="chip" 
             *ngFor="let chip of chipService.chips; let idx = index;trackBy: trackByMethod">
-            <span (dblclick)="turnEditModeOn(chip, idx)">{{ chip?.label  }}</span>
+            <span (dblclick)="turnEditModeOn(chip, idx)">{{ chip?.label | uppercase}}</span>
             <button *ngIf="!editMode" (click)="removeChip(idx)">X</button>
             <div *ngIf="editMode && selectedIndex === idx">
                 <input [(ngModel)]="editedChip" 
