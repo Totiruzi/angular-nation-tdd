@@ -6,14 +6,16 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChipUpperCasedPipe } from './chip/uppercase.pipe';
 import { ChipComponent } from './chip/chip.component';
-import { ColorDirective } from './chip/color.directive';
+import { ContainerMinimumChipsErrorDirective } from './chip/color.directive';
+import { DimInputOnEditDirective } from './chip/dim-input-on-edit.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ChipComponent,
     ChipUpperCasedPipe,
-    ColorDirective
+    ContainerMinimumChipsErrorDirective,
+    DimInputOnEditDirective
   ],
   imports: [
     BrowserModule,

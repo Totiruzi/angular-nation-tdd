@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 export interface Chip {
   id: number,
@@ -17,10 +18,21 @@ export class ChipService {
     { id: 6, label: 'Ander' },
   ];
 
+  chipsLength = new BehaviorSubject(this.chips.length);
+  iseditMode = new BehaviorSubject(false)
   constructor() {}
 
   getChips() {
+    this.getChipsLength()
     return this.chips;
+  }
+
+  getChipsLength() {
+    this.chipsLength.next(this.chips.length);
+  }
+
+  getIsEditMode() {
+    this.iseditMode.next(true);
   }
 
   addChip(chip: string) {
@@ -31,17 +43,22 @@ export class ChipService {
       '🚀 ~ file: chip.service.ts:18 ~ ChipService ~ addChip ~ chip',
       this.chips
     );
+    this.getChipsLength()
     return this.chips;
   }
 
   removeChip(index: number) {
     console.log(index);
     this.chips.splice(index, 1);
+    this.getChipsLength()
   }
 
   editChip(id: number, newChip: string) {
     console.log(id, newChip);
+    this.getIsEditMode()
     this.chips[id].label = newChip;
+    this.getChipsLength()
     return this.chips;
   }
 }
+
