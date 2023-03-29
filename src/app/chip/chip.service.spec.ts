@@ -1,16 +1,16 @@
 import "@angular/compiler";
 import { Chip, ChipService } from './chip.service';
-import { UpperCasedPipe } from "./uppercase.pipe";
+import { ChipUpperCasedPipe } from "./uppercase.pipe";
 
 describe('ChipService', () => {
   let chipService: ChipService;
   let chips: Array<Chip> = [];
-  let upperCasedPipe: UpperCasedPipe;
+  let upperCasedPipe: ChipUpperCasedPipe;
 
   beforeEach(() => {
     chipService = new ChipService();
     chips = chipService.getChips();
-    upperCasedPipe = new UpperCasedPipe()
+    upperCasedPipe = new ChipUpperCasedPipe()
   });
 
   it('1. should be created', () => {

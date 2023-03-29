@@ -4,19 +4,23 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ChipUpperCasedPipe } from './chip/uppercase.pipe';
 import { ChipComponent } from './chip/chip.component';
+import { ColorDirective } from './chip/color.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ChipComponent
+    ChipComponent,
+    ChipUpperCasedPipe,
+    ColorDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [ChipUpperCasedPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

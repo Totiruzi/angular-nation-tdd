@@ -14,4 +14,14 @@ describe('ChipComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should add a chip', () => {
+    component.onAddChip()
+  })
+
+  it('should edit the chip', () => {
+    //spyOn(component.editChip,)
+    component.de
+
+  })
 });
