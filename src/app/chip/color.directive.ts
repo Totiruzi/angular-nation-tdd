@@ -17,12 +17,4 @@ export class ContainerMinimumChipsErrorDirective implements OnInit{
     })
   }
 
-  // @HostListener('dbclick') onclick() {
-    
-  // }
-
-  // @HostListener('mouseenter') onMouseEnter() {
-  //   this.isbeingEdited ? this.elRef.nativeElement.style.border = '2px solid grey'
-  //   : this.elRef.nativeElement.style.border = ''
-  // }
 }
