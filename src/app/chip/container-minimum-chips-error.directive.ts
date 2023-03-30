@@ -1,5 +1,5 @@
 import { ChipService } from './chip.service';
-import { Directive, Input, ElementRef, HostListener, OnInit } from '@angular/core';
+import { Directive, ElementRef, OnInit } from '@angular/core';
 
 
 @Directive({
@@ -16,5 +16,4 @@ export class ContainerMinimumChipsErrorDirective implements OnInit{
       ''
     })
   }
-
 }
