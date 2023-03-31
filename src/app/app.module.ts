@@ -8,6 +8,8 @@ import { ChipUpperCasedPipe } from './chip/uppercase.pipe';
 import { ChipComponent } from './chip/chip.component';
 import { ContainerMinimumChipsErrorDirective } from './chip/container-minimum-chips-error.directive';
 import { DimInputOnEditDirective } from './chip/dim-input-on-edit.directive';
+import { ContainerMaximumChipsErrorDirective } from './chip/container-maximum-chips-error.directive';
+import { CustomChipValidatorDirective } from './chip/custom-chip-validator.directive';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { DimInputOnEditDirective } from './chip/dim-input-on-edit.directive';
     ChipComponent,
     ChipUpperCasedPipe,
     ContainerMinimumChipsErrorDirective,
-    DimInputOnEditDirective
+    DimInputOnEditDirective,
+    ContainerMaximumChipsErrorDirective,
+    CustomChipValidatorDirective
   ],
   imports: [
     BrowserModule,

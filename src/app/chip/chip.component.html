@@ -1,41 +1,26 @@
 <label for="">Enter User Names</label>
-<img
-  [src]="'../../assets/add_icon.png'"
-  style="width: 16px; height: 16px; float: right; cursor: pointer"
-  (click)="addListModal()"
-/>
+<img [src]="'../../assets/add_icon.png'" style="width: 16px; height: 16px; float: right; cursor: pointer"
+  (click)="addListModal()" />
 <div class="chip-container" containerMinimumChipsError>
   <form>
     <ng-container *ngIf="chipService.chips.length > 0">
-      <div
-        class="chip"
-        *ngFor="
+      <div class="chip" *ngFor="
           let chip of chipService.chips;
           let idx = index;
           trackBy: trackByMethod
-        "
-      >
+        ">
         <span (dblclick)="turnEditModeOn(chip, idx)">{{
           chip?.label | chipUppercased
-        }}</span>
-        <button *ngIf="!editMode" (click)="removeChip(idx)">X</button>
+          }}</span>
+        <button *ngIf="!editMode" (click)="removeChip(idx)">:heavy_check_mark:</button>
         <div *ngIf="editMode && selectedIndex === idx">
-          <input
-            [(ngModel)]="editedChip"
-            [ngModelOptions]="{ standalone: true }"
-            (keydown.enter)="editChip(idx, editedChip)"
-            (blur)="editMode = false"
-          />
+          <input [(ngModel)]="editedChip" [ngModelOptions]="{ standalone: true }"
+            (keydown.enter)="editChip(idx, editedChip)" (blur)="editMode = false" />
         </div>
       </div>
     </ng-container>
     <div class="newChip">
-      <input
-        type="text"
-        [(ngModel)]="newChip"
-        [ngModelOptions]="{ standalone: true }"
-        [placeholder]="'Add New Chip'"
-      />
+      <input type="text" [(ngModel)]="newChip" [ngModelOptions]="{ standalone: true }" [placeholder]="'Add New Chip'" />
       <button *ngIf="newChip" (click)="onAddChip()">√</button>
     </div>
   </form>
