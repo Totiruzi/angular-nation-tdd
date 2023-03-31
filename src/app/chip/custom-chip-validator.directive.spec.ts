@@ -1,4 +1,4 @@
-import { ChipComponent } from './chip.component';
+
 import { ChipService } from './chip.service';
 import { CustomChipValidatorDirective } from './custom-chip-validator.directive';
 

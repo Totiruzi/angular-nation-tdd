@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ChipService } from './chip.service';
-
+import { ChipService } from './chip.service'
+import { Observable } from 'rxjs';
 @Component({
   selector: 'app-chip',
   templateUrl: './chip.component.html',
@@ -12,6 +12,10 @@ export class ChipComponent implements OnInit {
   editMode: boolean = false;
   newChip: string = '';
   selectedIndex: number = -1;
+  maxChip: number = 7;
+  minChip: number = 3;
+  validateCount$: Observable<boolean> = this.chipService.validateCount;
+
 
   constructor(public chipService: ChipService) {}
 
@@ -48,4 +52,5 @@ export class ChipComponent implements OnInit {
   trackByMethod(index: number, el: any): number {
     return el.id;
   }
+
 }

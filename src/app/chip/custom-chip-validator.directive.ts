@@ -1,18 +1,18 @@
-import { Directive, Input } from '@angular/core';
-import { ChipComponent } from './chip.component';
+import { ChipService } from './chip.service';
+import { Directive, Input, ElementRef } from '@angular/core';
 
 @Directive({
-  selector: '[appCustomChipValidator]'
+  selector: '[chipCountValidator]'
 })
 export class CustomChipValidatorDirective {
-  @Input('customChipValidator') maxChips: number;
-  
-  constructor(private chipComponent: ChipComponent) { }
+  @Input('customChipValidator') minChips: number = 3;
+  @Input('customChipValidator') maxChips: number = 7;
 
-  ngOnChanges() {
-    if (this.maxChips) {
-      this.chipComponent.validateChipsCount(this.maxChips);
-    }
+  
+  constructor(private chipService: ChipService, private elRef: ElementRef) { }
+
+  ngOnInit(): void {
+    this.chipService. validateChipsCount(this.minChips, this.maxChips);
   }
 
 }

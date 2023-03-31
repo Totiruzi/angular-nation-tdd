@@ -1,7 +1,7 @@
 <label for="">Enter User Names</label>
 <img [src]="'../../assets/add_icon.png'" style="width: 16px; height: 16px; float: right; cursor: pointer"
   (click)="addListModal()" />
-<div class="chip-container" containerMinimumChipsError>
+<div class="chip-container" chipCountValidator [ngClass]="{'chipCountValidate':  {{validateCount$ | async}} }" >
   <form>
     <ng-container *ngIf="chipService.chips.length > 0">
       <div class="chip" *ngFor="
@@ -12,7 +12,7 @@
         <span (dblclick)="turnEditModeOn(chip, idx)">{{
           chip?.label | chipUppercased
           }}</span>
-        <button *ngIf="!editMode" (click)="removeChip(idx)">:heavy_check_mark:</button>
+        <button *ngIf="!editMode" (click)="removeChip(idx)">❌</button>
         <div *ngIf="editMode && selectedIndex === idx">
           <input [(ngModel)]="editedChip" [ngModelOptions]="{ standalone: true }"
             (keydown.enter)="editChip(idx, editedChip)" (blur)="editMode = false" />

@@ -20,6 +20,9 @@ export class ChipService {
 
   chipsLength = new BehaviorSubject(this.chips.length);
   iseditMode = new BehaviorSubject(false);
+  validateCount =  new BehaviorSubject(false);;
+
+
   constructor() {}
 
   getChips() {
@@ -59,5 +62,10 @@ export class ChipService {
     this.chips[id].label = newChip;
     this.getChipsLength();
     return this.chips;
+  }
+
+  validateChipsCount(minChip: number, maxChip: number) {
+    console.log("🚀 ~ file: chip.service.ts:68 ~ ChipService ~ validateChipsCount ~ minChip:", minChip, maxChip)
+    this.validateCount.next(this.chipsLength.getValue() >= minChip && this.chipsLength.getValue() <= maxChip);
   }
 }
