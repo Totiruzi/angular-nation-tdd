@@ -10,6 +10,7 @@ export class ChipComponent implements OnInit {
   @ViewChild('editedChip') editedChip: string = '';
   chips: Array<string> = ['Alan', 'Teo', 'Alvin'];
   editMode: boolean = false;
+  addMode: boolean = false;
   newChip: string = '';
   selectedIndex: number = -1;
 
@@ -20,10 +21,16 @@ export class ChipComponent implements OnInit {
   onAddChip() {
     this.chipService.addChip(this.newChip);
     this.newChip = '';
+    this.onChangeMode("reset");
   }
 
   removeChip(index: number) {
+    console.log("🚀 ~ file: chip.component.ts:27 ~ ChipComponent ~ removeChip ~ index:", index)
+    if(!this.editMode && !this.addMode)
+    console.log("🚀 ~ file: chip.component.ts:29 ~ ChipComponent ~ removeChip ~ this.editMode:", this.editMode)
+    console.log("🚀 ~ file: chip.component.ts:29 ~ ChipComponent ~ removeChip ~ this.addMode:", this.addMode)
     this.chipService.removeChip(index);
+    this.onChangeMode("reset");
   }
 
   turnEditModeOn(chip: any, idx: number) {
@@ -31,7 +38,7 @@ export class ChipComponent implements OnInit {
       '🚀 ~ file: chip.component.ts:21 ~ ChipComponent ~ turnEditModeOn ~ chip',
       chip
     );
-    this.editMode = true;
+    this.onChangeMode("edit");
     this.editedChip = chip.label;
     this.selectedIndex = idx;
   }
@@ -43,6 +50,26 @@ export class ChipComponent implements OnInit {
 
   addListModal() {
     console.log('Popup Modal to add List of Chips');
+  }
+
+  onChangeMode(mode: string){
+    console.log("🚀 ~ file: chip.component.ts:56 ~ ChipComponent ~ onChangeMode ~ mode:", mode)
+    switch (mode) {
+      case "add":
+        this.editMode=false;
+        this.addMode=true;
+        break;
+
+        case "edit":
+        this.editMode=true;
+        this.addMode=false;
+        break;
+      
+      default:
+        this.editMode=false;
+        this.addMode=false;
+        break;
+    }
   }
 
   trackByMethod(index: number, el: any): number {

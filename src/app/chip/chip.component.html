@@ -18,14 +18,15 @@
         <span (dblclick)="turnEditModeOn(chip, idx)">{{
           chip?.label | chipUppercased
         }}</span>
-        <button *ngIf="!editMode" (click)="removeChip(idx)">✖️</button>
+        <button *ngIf="!editMode && !addMode" (click)="removeChip(idx)">✖️</button>
         <div *ngIf="editMode && selectedIndex === idx">
           <input
             [(ngModel)]="editedChip"
             [ngModelOptions]="{ standalone: true }"
-            (keydown.enter)="editChip(idx, editedChip)"
-            (blur)="editMode = false"
+            (focus)="onChangeMode('add')"
+            (blur) = "onChangeMode('reset')"
           />
+          <button (click)="editChip(idx, editedChip)">✔️</button>
         </div>
       </div>
     </ng-container>
