@@ -1,11 +1,12 @@
-import { ChipService } from './chip.service';
+
 import { Directive, ElementRef, OnInit } from '@angular/core';
+import { ChipService } from '../chip.service';
 
 
 @Directive({
   selector: '[containerMinimumChipsError]'
 })
-export class ContainerMinimumChipsErrorDirective implements OnInit{
+export class MinimumChipsErrorDirective implements OnInit{
   
   constructor(private elRef: ElementRef, private chipService: ChipService) { }
 

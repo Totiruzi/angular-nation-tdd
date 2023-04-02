@@ -1,5 +1,6 @@
 import { Directive, ElementRef } from '@angular/core';
-import { ChipService } from './chip.service';
+import { ChipService } from '../chip.service';
+
 
 @Directive({
   selector: '[appDimInputOnEdit]'

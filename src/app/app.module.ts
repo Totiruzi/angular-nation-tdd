@@ -4,17 +4,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ChipUpperCasedPipe } from './chip/uppercase.pipe';
 import { ChipComponent } from './chip/chip.component';
-import { ContainerMinimumChipsErrorDirective } from './chip/container-minimum-chips-error.directive';
-import { DimInputOnEditDirective } from './chip/dim-input-on-edit.directive';
+import { ChipUpperCasedPipe } from './chip/directives/uppercase.pipe';
+import { MinimumChipsErrorDirective } from './chip/directives/container-minimum-chips-error.directive';
+import { DimInputOnEditDirective } from './chip/directives/dim-input-on-edit.directive';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ChipComponent,
     ChipUpperCasedPipe,
-    ContainerMinimumChipsErrorDirective,
+    MinimumChipsErrorDirective,
     DimInputOnEditDirective
   ],
   imports: [
