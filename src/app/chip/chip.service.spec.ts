@@ -1,6 +1,7 @@
 import "@angular/compiler";
 import { Chip, ChipService } from './chip.service';
-import { ChipUpperCasedPipe } from "./uppercase.pipe";
+import { ChipUpperCasedPipe } from "./directives/uppercase.pipe";
+
 
 describe('ChipService', () => {
   let chipService: ChipService;

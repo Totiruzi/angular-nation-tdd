@@ -1,5 +1,4 @@
 import 'zone.js'
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { ChipService } from './chip.service';
@@ -9,10 +8,6 @@ import { ChipComponent } from './chip.component';
 describe('ChipComponent', () => {
   let component: ChipComponent;
   let fixture: ComponentFixture<ChipComponent>;
-
-  beforeAll(()=>{
-    TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
-  })
 
   beforeEach(() => {
     const chipServiceStub = () => ({
@@ -26,7 +21,6 @@ describe('ChipComponent', () => {
       declarations: [ChipComponent],
       providers: [{ provide: ChipService, useFactory: chipServiceStub }]
     });
-    
     fixture = TestBed.createComponent(ChipComponent);
     component = fixture.componentInstance;
   });
@@ -43,20 +37,19 @@ describe('ChipComponent', () => {
     expect(component.editMode).toEqual(false);
   });
 
-  it(`addMode has default value`, () => {
-    expect(component.addMode).toEqual(false);
-  });
-
   describe('onAddChip', () => {
     it('makes expected calls', () => {
       const chipServiceStub: ChipService = fixture.debugElement.injector.get(
         ChipService
       );
-      spyOn(component, 'onChangeMode').and.callThrough();
-      spyOn(chipServiceStub, 'addChip').and.callThrough();
+      const spy = jest.spyOn(chipServiceStub, 'addChip');
+      spy.mockImplementation((chip: string): any => {
+        return {id: 7, label: ''};
+      });
       component.onAddChip();
-      expect(component.onChangeMode).toHaveBeenCalled();
-      expect(chipServiceStub.addChip).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalledWith('some value');
     });
   });
+  
+  
 });
