@@ -1,4 +1,6 @@
-import 'zone.js'
+import 'zone.js';
+import 'zone.js/testing';
+// import { jest } from '@jest/globals';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
@@ -47,13 +49,30 @@ describe('ChipComponent', () => {
     expect(component.addMode).toEqual(false);
   });
 
+  test('should call onChangeMode when button is clicked', () => {
+    // const component = new ChipComponent();
+    let onChangedModeCall = false;
+    const spy = jest.spyOn(component, 'onChangeMode').mockImplementation(() => {
+      onChangedModeCall = true;
+      // console.log('onChangeMode spy called');
+    });
+  
+    // simulate click on button
+    component.onAddChip();
+    
+    expect(spy).toHaveBeenCalled();
+    expect(component.onChangeMode).toHaveBeenCalled();
+    expect(onChangedModeCall).toBeTruthy();
+  });
+
   describe('onAddChip', () => {
     it('makes expected calls', () => {
       const chipServiceStub: ChipService = fixture.debugElement.injector.get(
         ChipService
       );
-      spyOn(component, 'onChangeMode').and.callThrough();
-      spyOn(chipServiceStub, 'addChip').and.callThrough();
+      jest.spyOn(component, 'onChangeMode') //.and.callThrough();
+      jest.spyOn(component, 'onChangeMode') //.and.callThrough();
+      jest.spyOn(chipServiceStub, 'addChip') //.and.callThrough();
       component.onAddChip();
       expect(component.onChangeMode).toHaveBeenCalled();
       expect(chipServiceStub.addChip).toHaveBeenCalled();

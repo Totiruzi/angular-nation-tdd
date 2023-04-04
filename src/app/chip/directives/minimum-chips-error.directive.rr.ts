@@ -4,7 +4,8 @@ import { By } from '@angular/platform-browser';
 
 import { ChipService } from '../chip.service';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { MinimumChipsErrorDirective } from './container-minimum-chips-error.directive';
+import { MinimumChipsErrorDirective } from './minimum-chips-error.directive';
+
 
 @Component({
   template: '<div containerMinimumChipsError></div>'

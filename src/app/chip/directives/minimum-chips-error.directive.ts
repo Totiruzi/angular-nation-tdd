@@ -4,7 +4,7 @@ import { ChipService } from '../chip.service';
 
 
 @Directive({
-  selector: '[containerMinimumChipsError]'
+  selector: '[minimumChipsError]'
 })
 export class MinimumChipsErrorDirective implements OnInit{
   
